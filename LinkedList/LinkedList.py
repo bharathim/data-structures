@@ -1,4 +1,4 @@
-from Node import Node
+from LinkedList.Node import Node
 
 
 class LinkedList:
