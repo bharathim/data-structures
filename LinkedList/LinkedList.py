@@ -64,14 +64,14 @@ class LinkedList:
 
         print('Key not found: ' + str(key))
 
-    def delete_by_pos(self, position = None):
+    def delete_by_pos(self, position=None):
         current = self.head
         current_position = 0
         while current:
             if position == 0:
                 self.head = self.head.next
                 current.next = None
-                print ('Deleted head: ' + current.data)
+                print('Deleted head: ' + current.data)
                 return
 
             prev_node = current
@@ -81,7 +81,7 @@ class LinkedList:
             if current_position == position:
                 prev_node.next = current.next
                 current.next = None
-                print ('Delete at pos: {0}, key: {1}'.format(position, current.data))
+                print('Delete at pos: {0}, key: {1}'.format(position, current.data))
                 return
 
         print('Position {0} exceeded length {1}'.format(position, len(self)))
@@ -93,10 +93,10 @@ class LinkedList:
         current = self.head
         previous = None
         while current:
-            next = current.next
+            next_node = current.next
             current.next = previous
             previous = current
-            current = next
+            current = next_node
 
         self.head = previous
 
@@ -127,7 +127,6 @@ class LinkedList:
                 return True
 
         return False
-
 
     def swap(self, key1, key2):
         if key1 == key2:
@@ -171,7 +170,7 @@ class LinkedList:
     def print_list(self):
         if self.head:
             current = self.head
-            print('HEAD', end = '->')
+            print('HEAD', end='->')
             while current:
                 print(current.data, end='->')
                 current = current.next
@@ -189,50 +188,51 @@ class LinkedList:
             current.next = self.head
             self.head = current
 
-if __name__ =="__main__":
-    list = LinkedList()
-    list.append('A')
-    list.append('B')
-    list.prepend('C')
-    list.prepend('D')
-    list.print_list()
-    list.insert_after('Z', 'Z')
-    list.insert_after('C', 'Z')
-    list.print_list()
-    list.delete_by_key('Z')
-    list.print_list()
-    list.delete_by_key('D')
-    list.print_list()
-    list.delete_by_key('X')
-    list.print_list()
-    list.delete_by_pos(0)
-    list.print_list()
-    list.delete_by_pos(1)
-    list.print_list()
-    list.append('B')
-    list.append('C')
-    list.delete_by_pos(100)
-    list.append('D')
-    list.append('E')
-    print(len(list))
-    list.print_list()
-    list.swap('A', 'B')
-    list.print_list()
-    list.swap('A', 'D')
-    list.print_list()
-    list.swap('A', 'A')
-    list.swap('A', 'Z')
-    list.reverse()
-    list.print_list()
 
-    dups_list = LinkedList()
-    dups_list.prepend(1)
-    dups_list.prepend(2)
-    dups_list.prepend(2)
-    dups_list.prepend(3)
-    dups_list.prepend(3)
-    dups_list.prepend(3)
-    dups_list.prepend(0)
-    dups_list.print_list()
-    dups_list.remove_duplicates()
-    dups_list.print_list()
+if __name__ == "__main__":
+    sl = LinkedList()
+    sl.append('A')
+    sl.append('B')
+    sl.prepend('C')
+    sl.prepend('D')
+    sl.print_list()
+    sl.insert_after('Z', 'Z')
+    sl.insert_after('C', 'Z')
+    sl.print_list()
+    sl.delete_by_key('Z')
+    sl.print_list()
+    sl.delete_by_key('D')
+    sl.print_list()
+    sl.delete_by_key('X')
+    sl.print_list()
+    sl.delete_by_pos(0)
+    sl.print_list()
+    sl.delete_by_pos(1)
+    sl.print_list()
+    sl.append('B')
+    sl.append('C')
+    sl.delete_by_pos(100)
+    sl.append('D')
+    sl.append('E')
+    print(len(sl))
+    sl.print_list()
+    sl.swap('A', 'B')
+    sl.print_list()
+    sl.swap('A', 'D')
+    sl.print_list()
+    sl.swap('A', 'A')
+    sl.swap('A', 'Z')
+    sl.reverse()
+    sl.print_list()
+
+    duplicate_list = LinkedList()
+    duplicate_list.prepend(1)
+    duplicate_list.prepend(2)
+    duplicate_list.prepend(2)
+    duplicate_list.prepend(3)
+    duplicate_list.prepend(3)
+    duplicate_list.prepend(3)
+    duplicate_list.prepend(0)
+    duplicate_list.print_list()
+    duplicate_list.remove_duplicates()
+    duplicate_list.print_list()
