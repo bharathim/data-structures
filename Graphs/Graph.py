@@ -4,16 +4,16 @@ from LinkedList.LinkedList import LinkedList
 class Graph(object):
     def __init__(self, vertices):
         self.vertices = vertices
-        self.array = [LinkedList() for _ in range(vertices)]
+        self.edges = [LinkedList() for _ in range(vertices)]
 
     def add_edge(self, source, destination):
         if source < self.vertices and destination < self.vertices:
-            self.array[source].prepend(destination)
+            self.edges[source].prepend(destination)
 
     def print_graph(self):
         for i in range(self.vertices):
             print('|{0}'.format(i), end='| => ')
-            current = self.array[i].head
+            current = self.edges[i].head
             while current:
                 print('[{0}'.format(current.data), end='] -> ')
                 current = current.next
