@@ -44,3 +44,4 @@ if __name__ == "__main__":
     print(q.back())
     print(q.dequeue())
     q.print()
+    print(len(q))
