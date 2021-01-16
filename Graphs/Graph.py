@@ -1,5 +1,6 @@
 from LinkedList.LinkedList import LinkedList
 from Queues.Queue import Queue
+from Stacks.stack import Stack
 
 
 class Graph(object):
@@ -16,18 +17,37 @@ class Graph(object):
 
         queue = Queue()
         queue.enqueue(start)
-        visited = set()
+        visited = {start}
 
-        while queue:
+        while not queue.is_empty():
             current_vertex = queue.dequeue()
             result.append(current_vertex)
-            visited.add(current_vertex)
 
             adjacent_vertex = self.edges[current_vertex].head
             while adjacent_vertex:
                 if adjacent_vertex.data not in visited:
                     visited.add(adjacent_vertex.data)
                     queue.enqueue(adjacent_vertex.data)
+                adjacent_vertex = adjacent_vertex.next
+        return result
+
+    def dfs_traversal(self, start):
+        result = []
+
+        stack = Stack()
+        stack.push(start)
+        visited = {start}
+
+        while not stack.is_empty():
+            current_vertex = stack.pop()
+            result.append(current_vertex)
+            adjacent_vertex = self.edges[current_vertex].head
+
+            while adjacent_vertex:
+                if adjacent_vertex.data not in visited:
+                    visited.add(adjacent_vertex.data)
+                    stack.push(adjacent_vertex.data)
+
                 adjacent_vertex = adjacent_vertex.next
         return result
 
@@ -42,10 +62,12 @@ class Graph(object):
 
 
 if __name__ == "__main__":
-    g = Graph(4)
-    g.add_edge(0, 1)
-    g.add_edge(0, 2)
+    g = Graph(7)
+    g.add_edge(1, 2)
     g.add_edge(1, 3)
-    g.add_edge(2, 3)
+    g.add_edge(2, 4)
+    g.add_edge(2, 5)
+    g.add_edge(3, 6)
     g.print_graph()
-    print(g.bfs_traversal(0))
+    print(g.bfs_traversal(1))
+    print(g.dfs_traversal(1))
