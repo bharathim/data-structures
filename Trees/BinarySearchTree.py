@@ -19,6 +19,9 @@ class BinarySearchTree(object):
         else:
             self.root = TreeNode(data)
 
+    def search_rec(self, data):
+        return self.root.search_rec(data) if self.root else False
+
     def display(self, node):
         lines, _, _, _ = self._display_aux(node)
         for line in lines:
@@ -83,3 +86,7 @@ if __name__ == "__main__":
         e = randint(0, 100)
         bst.insert_rec(e)
     bst.display(bst.root)
+
+    #print(bst.search_rec(50))
+    print(bst.search_rec(28))
+

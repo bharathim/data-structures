@@ -31,3 +31,19 @@ class TreeNode(object):
                 self.right.insert_rec(data)
             else:
                 self.right = TreeNode(data)
+
+    def search_rec(self, data):
+        if data < self.data:
+            if self.left:
+                if self.left.search_rec(data):
+                    return True
+                else:
+                    return False
+        elif data > self.data:
+            if self.right:
+                if self.right.search_rec(data):
+                    return True
+                else:
+                    return False
+        else:
+            return True
