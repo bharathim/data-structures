@@ -7,9 +7,15 @@ class BinarySearchTree(object):
     def __init__(self, data):
         self.root = TreeNode(data)
 
-    def insert(self, data):
+    def insert_iter(self, data):
         if self.root:
-            self.root.insert(data)
+            self.root.insert_iter(data)
+        else:
+            self.root = TreeNode(data)
+
+    def insert_rec(self, data):
+        if self.root:
+            self.root.insert_rec(data)
         else:
             self.root = TreeNode(data)
 
@@ -75,5 +81,5 @@ if __name__ == "__main__":
     bst = BinarySearchTree(50)
     for _ in range(15):
         e = randint(0, 100)
-        bst.insert(e)
+        bst.insert_rec(e)
     bst.display(bst.root)

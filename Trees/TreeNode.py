@@ -5,7 +5,7 @@ class TreeNode(object):
         self.right = None
         self.parent = None
 
-    def insert(self, data):
+    def insert_iter(self, data):
         current = self
         parent = None
         while current:
@@ -20,3 +20,14 @@ class TreeNode(object):
         else:
             parent.right = TreeNode(data)
 
+    def insert_rec(self, data):
+        if data < self.data:
+            if self.left:
+                self.left.insert_rec(data)
+            else:
+                self.left = TreeNode(data)
+        else:
+            if self.right:
+                self.right.insert_rec(data)
+            else:
+                self.right = TreeNode(data)
